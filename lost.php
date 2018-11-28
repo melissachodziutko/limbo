@@ -134,7 +134,7 @@ mysqli_close( $dbc ) ;
 
 </select>
 
-</select>
+
 
 
 
