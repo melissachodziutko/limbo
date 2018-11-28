@@ -12,9 +12,10 @@
 		<form action="LandingPageLIMBO.php" align = "left">
         <input type="submit" value="Go to Landing Page" />
         </form>
-        <form action="losttable.php" align = "left">
+         <form action="losttable.php" align = "left">
         <input type="submit" value="Back to table" />
         </form>
+        
         <center>
         <h1>Welcome to Limbo!</h1>
      
@@ -22,36 +23,67 @@
         
         
         <p>
-           Lost something? Fill out this form so people can keep an eye out. Check our current lost item page regularly to see if someone found it.
+           Lost? something? Fill out this form to help other people find their stuff.
         </p>
         
-      
-		<form>  
-		Item: <br>
-        <input type="text" name="Item"> <br>
-		Location Lost: <br>
-        <!--update this when we move it to PHP to make it grab from sql- let melissa handle this-->
-		<select>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-        </select> <br>
-        Color:<br>
-        <input type="text" name="Color"> <br>
-        When it was lost (MM/DD/YY format): <br>
-        <input type="text" name="Item"> <br>
-        Contact Number: <br>
-        <input type="text" name="Item"> <br>
-        Contact Email: <br>
-        <input type="text" name="Item"> <br>
-		</form>
-		
-		<br>
-		<!-- put stuff in the database-->
-		<button type = "button"> Submit </button>
+
+<?php
+# Connect to MySQL server and the database
+require( 'includes/connect_db.php' ) ;
+# Includes these helper functions
+require( 'includes/helpers_limbo.php' ) ;
+
+
+if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
+    $id = $_POST['id'];
+    #echo $id;
+    #show_query($query);
+    #$id = mysqli_query($dbc, $query);
+    #echo "This is id:", $id, "!!!";
+    $desc = $_POST['description'] ;
+	$create = date('Y-m-d G:i:s');
+    $update = date('Y-m-d G:i:s');
+    $room = $_POST['room'] ;
+    $owner = 'N/A' ;
+    $finder = $_POST['finder'] ;
+    $item_status = 'lost' ;
+	#$dob = '0000-00-00 00:00:00'
+    
+            $result = insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finder, $item_status) ;
+      #echo "<p>Added " . $result . " new print(s) ". $num . " @ $" . $fname . " . $lname . "</p>" ; 
         
-            </center>
+   
+ 
+}
+    
+
+# Close the connection
+mysqli_close( $dbc ) ;
+?>
+
+<!-- HTML with embedded PHP --> 
+<form action="lost.php" method="POST"> 
+<p>Location: 
+    <select id="id" name="id">                      
+  <option value="0">--Select Animal--</option>
+  <option value="1">Cat</option>
+  <option value="2">Dog</option>
+  <option value="3">Cow</option>
+</select>
+
+
+    <!--<input type="text" name="id" value="<?php 
+    if (isset($_POST['id'])) echo $_POST['id']; ?>">--> </p> 
+<p>Description: <input type="text" name="description" value="<?php 
+    if (isset($_POST['description'])) echo $_POST['description']; ?>"></p> 
+<p>Room: <input type="text" name="room" value="<?php 
+    if (isset($_POST['room'])) echo $_POST['room']; ?>"></p>
+<p>Your name: <input type="text" name="finder" value="<?php 
+    if (isset($_POST['finder'])) echo $_POST['finder']; ?>"></p>
+<p><input type="submit"></p> 
+</form>
+
+	
         </body>
 </html>
         
