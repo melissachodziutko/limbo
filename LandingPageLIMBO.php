@@ -5,7 +5,7 @@
         
         <title>Welcome to Limbo!</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
-        <link rel="stylesheet" href="overall.css">
+        <link rel="stylesheet" href="PracticeforLIMBO.css">
     </head>
     <body>
         <!-- this would lead to adminlogin.html -->

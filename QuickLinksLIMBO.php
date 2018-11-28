@@ -45,9 +45,9 @@
                 <?php
                 #$time = $_POST['id'];
                 $debug = true;
-                require( 'includes/connect_db.php' ) ;
+                #require( 'includes/connect_db.php' ) ;
                 # Includes these helper functions
-                require( 'includes/helpers_limbo.php' ) ;
+                #require( 'includes/helpers_limbo.php' ) ;
                 # Shows the records in prints
                 show_found_records($dbc);
                 ?>

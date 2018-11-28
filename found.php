@@ -36,10 +36,10 @@ require( 'includes/helpers_limbo.php' ) ;
 
 if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     $location = $_POST['id'];
-    $query = "SELECT id FROM location WHERE name = '" . $location . "'";
+    $id = "SELECT id FROM location WHERE name = '" . $location . "'";
     #echo $id;
-    show_query($query);
-    $id = mysqli_query($dbc, $query);
+    #show_query($query);
+    #$id = mysqli_query($dbc, $query);
     #echo "This is id:", $id, "!!!";
     $desc = $_POST['description'] ;
 	$create = date('Y-m-d G:i:s');
