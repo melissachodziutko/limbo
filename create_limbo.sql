@@ -18,3 +18,11 @@ add column date_found DATE,
 add column time_found TIME,
 add column name TEXT;
 explain stuff;
+
+create table if not exist admins (
+	admin_id INT not null PRIMARY KEY,
+	username TEXT,
+	email TEXT,
+	password TEXT
+);
+explain admins;
