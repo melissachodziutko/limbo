@@ -41,6 +41,10 @@
                 # Includes these helper functions
                 require( 'includes/helpers_limbo.php' ) ;
                 # Shows the records in prints
+                if($_SERVER[ 'REQUEST_METHOD' ] == 'GET') {
+                    if(isset($_GET['id'])) 
+		                  show_record($dbc, $_GET['id']) ;
+                }
                 show_found_records($dbc);
 ?>
         <form action="found.php">
