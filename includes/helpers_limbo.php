@@ -44,10 +44,48 @@ function show_lost_records($dbc) {
 function show_found_records($dbc) {
 	# Create a query to get the description, create_date, item_status
     
-	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'found' ORDER BY create_date DESC" ;
+	$query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found' ORDER BY create_date DESC" ;
 	
-	# Execute the query
+    # Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
+	check_results($results) ;
+
+	# Show results
+	if( $results )
+	{
+  		# But...wait until we know the query succeed before
+  		# rendering the table start.
+  		 echo '<H1>Found Items</H1>' ;
+		echo '<TABLE>';
+		  echo '<table border = "1"';
+		  echo '<TR>';
+        echo '<TH>Id</TH>';
+		  echo '<TH>Description</TH>';
+		  echo '<TH>Last Sighting Date/Time</TH>';
+		  echo '<TH>Status</TH>';
+		  echo '</TR>';
+		  # For each row result, generate a table row
+		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
+          {
+			echo '<TR>' ;
+			
+			$alink = '<A HREF=foundtable.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
+			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['description'] . '</TD>' ;
+			echo '<TD>' . $row['create_date'] . '</TD>' ;
+			echo '<TD>' . $row['item_status'] . '</TD>' ;
+			echo '</TR>' ;
+		  }
+		  
+		  # End the table
+		  echo '</TABLE>';
+		  # Free up the results in memory
+		  mysqli_free_result( $results ) ;
+			}
+}
+
+	# Execute the query
+	/*$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
 
 	# Show results
@@ -77,7 +115,7 @@ function show_found_records($dbc) {
 		  # Free up the results in memory
 		  mysqli_free_result( $results ) ;
 			}
-}
+}*/
 
 function show_link_records($dbc) {
 	# Create a query to get the description, create_date, item_status
@@ -131,7 +169,7 @@ function show_record($dbc, $id) {
 	{
   		# But...wait until we know the query succeed before
   		# rendering the table start.
-  		 echo '<H1>Lost Items</H1>' ;
+  		 echo '<H1>Requested Item</H1>' ;
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
@@ -167,7 +205,7 @@ function show_record($dbc, $id) {
 
 # Inserts a record into the prints table
 function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finder, $item_status) {
-  $query = 'INSERT INTO stuff(id, description, create_date, update_date, room, owner, finder, item_status) VALUES ("' . $id . '" ,"' . $desc . '" , "' . $create . '","' . $update . '","' . $room . '","' . $owner . '","' . $finder . '","' . $item_status . '")' ;
+  $query = 'INSERT INTO stuff(location_id, description, create_date, update_date, room, owner, finder, item_status) VALUES ("' . $id . '" ,"' . $desc . '" , "' . $create . '","' . $update . '","' . $room . '","' . $owner . '","' . $finder . '","' . $item_status . '")' ;
   show_query($query);
 	$results = mysqli_query($dbc,$query) ;
 	if(!valid_description($desc))
