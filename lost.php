@@ -62,7 +62,7 @@ mysqli_close( $dbc ) ;
 ?>
 
 <!-- HTML with embedded PHP --> 
-<form action="found.php" method="POST"> 
+<form action="lost.php" method="POST"> 
 
 <p>Location: 
 
