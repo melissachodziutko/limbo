@@ -15,15 +15,37 @@
 		<h1> Click on an item for more details! </h1>
 		<p> 
 			Reported in last
-			<label for="timeList">  
-			<input type="text" id="timeList" placeholder="amount of time" list="searchTime">
-			<datalist id="searchTime">
-				<option value= "24 hours" id="searchTime1">
-				<option value= "7 days" id="searchTime2">
-				<option value= "Month" id="searchTime3">
-				<option value= "Year" id="searchTime4">
-				<option value= "2 years" id="searchTime5">
-			</datalist>
+			
+         
+         <form action="QuickLinksLIMBO.php" method="POST"> 
+<p>reported in last: 
+    <select id="time" name="time">                      
+  <option value="0">--Select Animal--</option>
+  <option value="1">Cat</option>
+  <option value="2">Dog</option>
+  <option value="3">Cow</option>
+</select>
+
+
+    <!--<input type="text" name="id" value="<?php 
+    if (isset($_POST['time'])) echo $_POST['time']; ?>">--> </p> 
+<p><input type="submit"></p> 
+                <?php
+         if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
+    $id = $_POST['time'];
+             if ($id = 1){
+	
+            require( 'includes/connect_db.php' ) ;
+            # Includes these helper functions
+             require( 'includes/helpers_limbo.php' ) ;
+              # Shows the records in prints
+              show_lost_ql1_records($dbc);
+             }
+   
+ 
+}     
+                ?>
+</form>
 		</p>
 		<div class="bothForms">
 			<div class="rLost">
