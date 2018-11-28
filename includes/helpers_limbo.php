@@ -83,7 +83,44 @@ function show_found_records($dbc) {
 		  mysqli_free_result( $results ) ;
 			}
 }
+# Table of admin info
+function show_admin_records($dbc) {
+	
+# Query to get email, username, and password for each admin
+$query = 'SELECT email, username, password FROM admins ORDER BY username ASC';
 
+$results = mysli_query( $dbc, $query );
+check_results($results);
+
+# Show results
+	if( $results )
+	{
+  		# But...wait until we know the query succeed before
+  		# rendering the table start.
+  		 echo '<H1>Admins</H1>' ;
+		echo '<TABLE>';
+		  echo '<table border = "1"';
+		  echo '<TR>';
+		  echo '<TH>Username</TH>';
+		  echo '<TH>Email</TH>';
+		  echo '<TH>Password</TH>';
+		  echo '</TR>';
+
+		  # For each row result, generate a table row
+		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
+		  {
+			echo '<TR>' ;
+			echo '<TD>' . $row['username'] . '</TD>' ;
+			echo '<TD>' . $row['email'] . '</TD>' ;
+			echo '<TD>' . $row['password'] . '</TD>' ;
+			echo '</TR>' ;
+		  }
+		  # End the table
+		  echo '</TABLE>';
+		  # Free up the results in memory
+		  mysqli_free_result( $results ) ;
+    }
+}
 	# Execute the query
 	/*$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
