@@ -35,8 +35,7 @@ require( 'includes/helpers_limbo.php' ) ;
 
 
 if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
-    $location = $_POST['id'];
-    $id = "SELECT id FROM location WHERE name = '" . $location . "'";
+    $id = $_POST['id'];
     #echo $id;
     #show_query($query);
     #$id = mysqli_query($dbc, $query);
@@ -64,8 +63,17 @@ mysqli_close( $dbc ) ;
 
 <!-- HTML with embedded PHP --> 
 <form action="found.php" method="POST"> 
-<p>Location: <input type="text" name="id" value="<?php 
-    if (isset($_POST['id'])) echo $_POST['id']; ?>"> </p> 
+<p>Location: 
+    <select id="id" name="id">                      
+  <option value="0">--Select Animal--</option>
+  <option value="1">Cat</option>
+  <option value="2">Dog</option>
+  <option value="3">Cow</option>
+</select>
+
+
+    <!--<input type="text" name="id" value="<?php 
+    if (isset($_POST['id'])) echo $_POST['id']; ?>">--> </p> 
 <p>Description: <input type="text" name="description" value="<?php 
     if (isset($_POST['description'])) echo $_POST['description']; ?>"></p> 
 <p>Room: <input type="text" name="room" value="<?php 
