@@ -20,10 +20,10 @@
          <form action="QuickLinksLIMBO.php" method="POST"> 
 <p>reported in last: 
     <select id="time" name="time">                      
-  <option value="0">--Select Animal--</option>
-  <option value="1">Cat</option>
-  <option value="2">Dog</option>
-  <option value="3">Cow</option>
+  <option value="0">Select Time</option>
+  <option value="1">24 Hours</option>
+  <option value="2">7 Days</option>
+  <option value="3">1 Month</option>
 </select>
 
 
@@ -40,7 +40,7 @@
              require( 'includes/helpers_limbo.php' ) ;
               # Shows the records in prints
               show_lost_ql1_records($dbc);
-             }
+             } 
    
  
 }     

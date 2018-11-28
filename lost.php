@@ -48,18 +48,34 @@ if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     $finder = $_POST['finder'] ;
     $item_status = 'lost' ;
 	#$dob = '0000-00-00 00:00:00'
-    
-            $result = insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finder, $item_status) ;
+    if (!empty($id) || !empty($desc) || !empty($room) || !empty($finder)) {
+       #check for valid inputs
+        if ($id == 0){
+        echo '<p style="color:red">Please pick a location!</p>' ;    
+        } else if (empty($finder)){
+                    echo '<p style="color:red">Please fill out all required information!</p>' ;   
+                    } else if (empty($room)){
+                        echo '<p style="color:red">Please fill out all required information!</p>' ;   
+                            }else if (empty($desc)){  
+                                echo '<p style="color:red">Please fill out all required information!</p>' ;   
+                                }  else if (empty($desc) && empty($room) && empty($id) && empty($finder)){
+                                    echo '<p style="color:red">Please fill out all required information!</p>' ;
+                                    }
+                                    else{  
+                        $result = insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finder, $item_status) ;
+                                        }
+    }
       #echo "<p>Added " . $result . " new print(s) ". $num . " @ $" . $fname . " . $lname . "</p>" ; 
         
    
- 
+ # Close the connection
+
 }
     
-
 # Close the connection
 mysqli_close( $dbc ) ;
 ?>
+
 
 <!-- HTML with embedded PHP --> 
 <form action="lost.php" method="POST"> 
@@ -134,7 +150,7 @@ mysqli_close( $dbc ) ;
 
 </select>
 
-
+</select>
 
 
 
