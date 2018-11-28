@@ -24,6 +24,16 @@
 		</p>
 		</form>
 		<!-- Put table here -->
+		<!-- Sorry, this part might not be right -->
+			<?php
+			 #$time = $_POST['id'];
+			$debug = true;
+			require( 'includes/connect_db.php' ) ;
+			# Includes these helper functions
+			require( 'includes/helpers_limbo.php' ) ;
+			# Shows the records in prints
+			show_Link_records($dbc);
+			?>
 		<form action='#'>
 		<p> 
 			This item has been
@@ -35,7 +45,7 @@
 				<option value= "claimed" id="statusList3">
 			</datalist>	
 		</p>
-		<button> Update Status </button>
+		<input type="submit" value="Update Status"> 
 		</form>
 	</body>
 </html>
