@@ -64,5 +64,5 @@ tr:nth-child(even) {
   </tr>
 </table>   
     
- <button type="submit">Delete Row(s)</button>
+ <button type="submit">Edit Table</button>
 <button><a href="found.php"> Found something</a> </button>
