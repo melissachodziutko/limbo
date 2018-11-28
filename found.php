@@ -98,7 +98,7 @@ mysqli_close( $dbc ) ;
     <option value="30">West Cedar Townhouses (Lower)</option>
     <option value="31">West Cedar Townhouses (Upper)</option>
 </select>
-</select>
+
 
 
     <!--<input type="text" name="id" value="<?php 
