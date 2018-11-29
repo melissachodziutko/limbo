@@ -6,6 +6,12 @@
         <title>Lost</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
         <link rel="stylesheet" href="overall.css">
+	     <div class="hero-image">
+  <div class="hero-text">
+    <h1>LIMBO</h1>
+    <p>Marist's Number 1 Lost and Found Database</p>
+  </div>
+</div>
     </head>
     <body>
         <!--lead back to PracticePageLIMBO.html-->
