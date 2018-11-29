@@ -9,7 +9,7 @@ RC     7-Nov-13    Created.
 <?php
 # Includes these helper functions
 require( 'includes/helpers_limbo.php' ) ;
-
+global $pid;
 # Loads a specified or default URL.
 function load( $page = 'AdminChangeStatusLIMBO.php', $pid = -1 )
 {
@@ -19,10 +19,7 @@ function load( $page = 'AdminChangeStatusLIMBO.php', $pid = -1 )
   # Remove trailing slashes then append page name to URL and the print id.
   $url = rtrim( $url, '/\\' ) ;
   $url .= '/' . $page . '?user_id=' . $pid;
-
-  # Execute redirect then quit.
-  session_start( );
-
+  
   header( "Location: $url" ) ;
 
   exit() ;
@@ -55,5 +52,9 @@ function validate($uname = '', $pass = '')
     
     $pid = $row [ 'user_id' ] ;
     return intval($pid) ;
+}
+
+function logout(){
+    return 'out';
 }
 ?>
