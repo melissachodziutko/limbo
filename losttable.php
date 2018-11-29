@@ -15,11 +15,6 @@
         </form>
 
         <center>
-        <h1>Welcome to Limbo!</h1>
-     
-        <h2> Marist's Lost and Found Database </h2>
-        
-        
         <p>
            Lost something? Take a look at what is currently in our databases.
         </p>
