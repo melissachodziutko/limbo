@@ -4,6 +4,12 @@
     <head>
 		<title> Quick Links </title>
 		<link rel="stylesheet" href="overall.css">
+    <div class="hero-image">
+  <div class="hero-text">
+    <h1>LIMBO</h1>
+    <p>Marist's Number 1 Lost and Found Database</p>
+  </div>
+</div>
      </head>
      <body>
           <!--lead back to PracticePageLIMBO.html-->
@@ -11,7 +17,7 @@
         <input type="submit" value="Go to Landing Page" />
         </form>
 		 <div class = "all-buttons">
-           <center>     
+               
 		<!-- lead to lost.html -->
         <form action="losttable.php" >
         <input type="submit" value="Lost Something?" />
@@ -29,7 +35,6 @@
         <form action="adminlogin.php" align = "top">
         <input type="submit" value="Admin" />
         </form>
-               </center>
             </div>
 		<h1> Click on an item for more details! </h1>
 		<p> 
