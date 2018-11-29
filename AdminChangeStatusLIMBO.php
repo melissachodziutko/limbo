@@ -34,20 +34,25 @@
 			# Includes these helper functions
 			require( 'includes/helpers_limbo.php' ) ;
 			# Shows the records in prints
-			show_Link_records($dbc);
+            
+			show_link_records($dbc);
+            if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
+                #echo "i am being called";
+                $id = $_POST['id'];
+                $status = $_POST['sList'];
+                change_status($dbc, $id, $status);
+            }
 			?>
-		<form action='#'>
-		<p> 
-			This item has been
-			<label for="sList">
-			<input type="text" id="sList" placeholder="status" list="statusList">
-			<datalist id="statusList">
-				<option value= "lost" id="statusList1">
-				<option value= "found" id="statusList2">
-				<option value= "claimed" id="statusList3">
-			</datalist>	
-		</p>
+        <form action="AdminChangeStatusLIMBO.php" method="POST"> 
+        <p>Enter Id of Item to Change Status: <input type="text" name="id" value="<?php 
+            if (isset($_POST['id'])) echo $_POST['id']; ?>"></p>
+        <p>Status: <select id="sList" name="sList">                      
+            <option value="lost">lost</option>
+            <option value="found">found</option>
+            <option value="claimed">claimed</option>
+        </select>
 		<input type="submit" value="Update Status"> 
 		</form>
+        </p>
 	</body>
 </html>
