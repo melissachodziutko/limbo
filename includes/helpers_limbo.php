@@ -7,7 +7,7 @@ $debug = true;
 function show_lost_records($dbc) {
 	# Create a query to get the description, create_date, item_status
     
-	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'lost' ORDER BY create_date DESC" ;
+	$query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost' ORDER BY create_date DESC" ;
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
@@ -22,15 +22,19 @@ function show_lost_records($dbc) {
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
+        echo '<TH>Id</TH>';
 		  echo '<TH>Description</TH>';
-		  echo '<TH>Creation Date</TH>';
+		  echo '<TH>Last Sighting Date/Time</TH>';
 		  echo '<TH>Status</TH>';
 		  echo '</TR>';
 		  # For each row result, generate a table row
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
-		  {
+          {
 			echo '<TR>' ;
-			echo '<TD>' . $row['description'] . '</TD>' ;
+			
+			$alink = '<A HREF=losttable.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
+			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['description'] . '</TD>' ;
 			echo '<TD>' . $row['create_date'] . '</TD>' ;
 			echo '<TD>' . $row['item_status'] . '</TD>' ;
 			echo '</TR>' ;
@@ -44,7 +48,7 @@ function show_lost_records($dbc) {
 function show_lost_ql1_records($dbc) {
 	# Create a query to get the description, create_date, item_status
     
-	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'lost' AND update_date < '2017-12-06 07:12:46'  ORDER BY create_date DESC" ;
+	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'lost' AND update_date > '2018-11-06 07:12:46'  ORDER BY create_date DESC" ;
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
@@ -158,42 +162,10 @@ check_results($results);
 		  mysqli_free_result( $results ) ;
     }
 }
-	# Execute the query
-	/*$results = mysqli_query( $dbc , $query ) ;
-	check_results($results) ;
-
-	# Show results
-	if( $results )
-	{
-  		# But...wait until we know the query succeed before
-  		# rendering the table start.
-  		 echo '<H1>Found Items</H1>' ;
-		echo '<TABLE>';
-		  echo '<table border = "1"';
-		  echo '<TR>';
-		  echo '<TH>Description</TH>';
-		  echo '<TH>Creation Date</TH>';
-		  echo '<TH>Status</TH>';
-		  echo '</TR>';
-		  # For each row result, generate a table row
-		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
-		  {
-			echo '<TR>' ;
-			echo '<TD>' . $row['description'] . '</TD>' ;
-			echo '<TD>' . $row['create_date'] . '</TD>' ;
-			echo '<TD>' . $row['item_status'] . '</TD>' ;
-			echo '</TR>' ;
-		  }
-		  # End the table
-		  echo '</TABLE>';
-		  # Free up the results in memory
-		  mysqli_free_result( $results ) ;
-			}
-}*/
 
 function show_link_records($dbc) {
 	# Create a query to get the description, create_date, item_status
-	$query = 'SELECT description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
+	$query = 'SELECT id, description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
@@ -208,6 +180,7 @@ function show_link_records($dbc) {
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
+        echo '<TH>Id</TH>';
 		  echo '<TH>Description</TH>';
 		  echo '<TH>Last Sighting Date/Time</TH>';
 		  echo '<TH>Status</TH>';
@@ -216,9 +189,10 @@ function show_link_records($dbc) {
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
           {
 			echo '<TR>' ;
-			#echo '<TD>' . $row['id'] . '</TD>' ;
-			$alink = '<A HREF=test.php?id=' . $row['description']  . '>' . $row['description'] . '</A>' ;
+			
+			$alink = '<A HREF=AdminChangeStatus.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
 			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['description'] . '</TD>' ;
 			echo '<TD>' . $row['create_date'] . '</TD>' ;
 			echo '<TD>' . $row['item_status'] . '</TD>' ;
 			echo '</TR>' ;
