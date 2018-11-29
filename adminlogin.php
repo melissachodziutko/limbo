@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+	<div class="hero-image">
+  <div class="hero-text">
+    <h1>LIMBO</h1>
+    <p>Marist's Number 1 Lost and Found Database</p>
+  </div>
+</div>
 <?php
 # Connect to MySQL server and the database
 require( 'includes/connect_db.php' ) ;
