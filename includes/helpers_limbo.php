@@ -274,6 +274,28 @@ function change_status($dbc, $id, $status)
     show_query($query);
     $results = mysqli_query($dbc,$query) ;
 }
+
+function update_item($dbc, $id, $location_id, $desc, $update, $room)
+{
+    if (!empty($desc)){
+        $query = 'UPDATE stuff SET description ="' . $desc . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    if (!empty($room)){
+        $query = 'UPDATE stuff SET room ="' . $room . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    if (!empty($location_id)){
+        $query = 'UPDATE stuff SET location_id ="' . $location_id . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    $query = 'UPDATE stuff SET update_date ="' . $update . '" WHERE id=' . $id;
+    show_query($query);
+    $results = mysqli_query($dbc,$query) ;
+}
 # Shows the query as a debugging aid
 function show_query($query) {
   global $debug;
@@ -314,3 +336,4 @@ function valid_status($item_status) {
 }
 
 ?>
+
