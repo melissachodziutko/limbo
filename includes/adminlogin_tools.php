@@ -39,7 +39,7 @@ function validate($uname = '', $pass = '')
       return -1 ;
 
     # Make the query
-    $query = "SELECT user_id, username, pass FROM users WHERE username='" . $uname . "'" ;
+    $query = "SELECT user_id, username, pass FROM users WHERE username= '" . $uname . "' and pass= '" . $pass . "'";
     show_query($query) ;
 
     # Execute the query
@@ -49,13 +49,10 @@ function validate($uname = '', $pass = '')
     # If we get no rows, the login failed
     if (mysqli_num_rows( $results ) == 0 )
       return -1 ;
-
+    
     # We have at least one row, so get the frist one and return it
-    if ($pass == "gaze11e")
-        $row = mysqli_fetch_array($results, MYSQLI_ASSOC) ;
-    else
-        return -1;
-
+    $row = mysqli_fetch_array($results, MYSQLI_ASSOC) ;
+    
     $pid = $row [ 'user_id' ] ;
     return intval($pid) ;
 }
