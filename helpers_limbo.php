@@ -7,7 +7,7 @@ $debug = true;
 function show_lost_records($dbc) {
 	# Create a query to get the description, create_date, item_status
     
-	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'lost' ORDER BY create_date DESC" ;
+	$query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost' ORDER BY create_date DESC" ;
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
@@ -22,15 +22,19 @@ function show_lost_records($dbc) {
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
+        echo '<TH>Id</TH>';
 		  echo '<TH>Description</TH>';
-		  echo '<TH>Creation Date</TH>';
+		  echo '<TH>Last Sighting Date/Time</TH>';
 		  echo '<TH>Status</TH>';
 		  echo '</TR>';
 		  # For each row result, generate a table row
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
-		  {
+          {
 			echo '<TR>' ;
-			echo '<TD>' . $row['description'] . '</TD>' ;
+			
+			$alink = '<A HREF=losttable.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
+			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['description'] . '</TD>' ;
 			echo '<TD>' . $row['create_date'] . '</TD>' ;
 			echo '<TD>' . $row['item_status'] . '</TD>' ;
 			echo '</TR>' ;
@@ -158,42 +162,18 @@ check_results($results);
 		  mysqli_free_result( $results ) ;
     }
 }
-	# Execute the query
-	/*$results = mysqli_query( $dbc , $query ) ;
-	check_results($results) ;
 
-	# Show results
-	if( $results )
-	{
-  		# But...wait until we know the query succeed before
-  		# rendering the table start.
-  		 echo '<H1>Found Items</H1>' ;
-		echo '<TABLE>';
-		  echo '<table border = "1"';
-		  echo '<TR>';
-		  echo '<TH>Description</TH>';
-		  echo '<TH>Creation Date</TH>';
-		  echo '<TH>Status</TH>';
-		  echo '</TR>';
-		  # For each row result, generate a table row
-		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
-		  {
-			echo '<TR>' ;
-			echo '<TD>' . $row['description'] . '</TD>' ;
-			echo '<TD>' . $row['create_date'] . '</TD>' ;
-			echo '<TD>' . $row['item_status'] . '</TD>' ;
-			echo '</TR>' ;
-		  }
-		  # End the table
-		  echo '</TABLE>';
-		  # Free up the results in memory
-		  mysqli_free_result( $results ) ;
-			}
-}*/
-
-function show_link_records($dbc) {
+function show_records($dbc, $status) {
 	# Create a query to get the description, create_date, item_status
-	$query = 'SELECT description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
+    if ($status == "both") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
+    }
+    else if ($status == "found") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff WHERE item_status = "found" ORDER BY create_date DESC' ;
+    }
+    else if ($status == "lost") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff WHERE item_status = "lost" ORDER BY create_date DESC' ;
+    }
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
@@ -204,10 +184,11 @@ function show_link_records($dbc) {
 	{
   		# But...wait until we know the query succeed before
   		# rendering the table start.
-  		 echo '<H1>Lost Items</H1>' ;
+  		 echo '<H1>Items</H1>' ;
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
+        echo '<TH>Id</TH>';
 		  echo '<TH>Description</TH>';
 		  echo '<TH>Last Sighting Date/Time</TH>';
 		  echo '<TH>Status</TH>';
@@ -216,9 +197,11 @@ function show_link_records($dbc) {
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
           {
 			echo '<TR>' ;
-			#echo '<TD>' . $row['id'] . '</TD>' ;
-			$alink = '<A HREF=test.php?id=' . $row['description']  . '>' . $row['description'] . '</A>' ;
-			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+			
+			#$alink = '<A HREF=AdminChangeStatus.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
+			#echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['id'] . '</TD>' ;
+            echo '<TD>' . $row['description'] . '</TD>' ;
 			echo '<TD>' . $row['create_date'] . '</TD>' ;
 			echo '<TD>' . $row['item_status'] . '</TD>' ;
 			echo '</TR>' ;
@@ -292,6 +275,35 @@ function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finde
 		check_results($results) ;
 
   return $results ;
+}
+
+function change_status($dbc, $id, $status)
+{
+    $query = 'UPDATE stuff SET item_status ="' . $status . '" WHERE id=' . $id;
+    show_query($query);
+    $results = mysqli_query($dbc,$query) ;
+}
+
+function update_item($dbc, $id, $location_id, $desc, $update, $room)
+{
+    if (!empty($desc)){
+        $query = 'UPDATE stuff SET description ="' . $desc . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    if (!empty($room)){
+        $query = 'UPDATE stuff SET room ="' . $room . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    if (!empty($location_id)){
+        $query = 'UPDATE stuff SET location_id ="' . $location_id . '" WHERE id=' . $id;
+        show_query($query);
+        $results = mysqli_query($dbc,$query) ;
+    }
+    $query = 'UPDATE stuff SET update_date ="' . $update . '" WHERE id=' . $id;
+    show_query($query);
+    $results = mysqli_query($dbc,$query) ;
 }
 
 # Shows the query as a debugging aid
