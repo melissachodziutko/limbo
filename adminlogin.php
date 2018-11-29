@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-	<div class="hero-image">
-  <div class="hero-text">
-    <h1>LIMBO</h1>
-    <p>Marist's Number 1 Lost and Found Database</p>
-  </div>
-</div>
 <?php
 # Connect to MySQL server and the database
 require( 'includes/connect_db.php' ) ;
 
 # Connect to MySQL server and the database
 require( 'includes/adminlogin_tools.php' ) ;
-
-if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
-
+session_start();
+if (!empty($_SESSION)){
+if ($_SESSION['logged_in'] == 'logged'){
+    load('loginAuthorization.php', $pid);
+     }
+}
+else {
+    if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
+    
     $uname = $_POST['username'] ;
     $pass = $_POST['password'] ;
     
     $pid = validate($uname, $pass) ;
 
     if($pid == -1)
-      echo '<P style=color:red>Login failed please try again.</P>' ;
+        echo '<P style=color:red>Login failed please try again.</P>' ;
 
-    else
-      load('AdminChangeStatusLIMBO.php', $pid);
+    else {
+        session_start( );
+        $_SESSION['logged_in'] = 'logged';
+        load('loginAuthorization.php', $pid);
+        }
+    }
 }
+   
 ?>
     <head>
         
         <title>Login</title>
-        <link rel="stylesheet" href="overall.css">
+        <link rel="stylesheet" href="csslogin.css">
     </head>
     <body>
 		<button> <a href="LandingPageLIMBO.php"> Back to landing page </a></button>
@@ -54,28 +59,3 @@ if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     </body>
     
 </html>
-          
-<!-- Get inputs from the user. -->
-<!--<h1>Presidents login</h1>
-<form action="presidents_login.php" method="POST">
-<table>
-<tr>
-<td>Last Name:</td><td><input type="text" name="lname"></td>
-</tr>
-</table>
-<p><input type="submit" ></p>
-</form>
-</html>-->
-
-<!--Username:<br>
-		<input type="text" name="admin"><br>
-		Password:<br>
-		<input type="text" name="password">-->
-       
-        
-        
-        
-        
-   
-        
-       
