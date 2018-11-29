@@ -294,6 +294,12 @@ function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finde
   return $results ;
 }
 
+function change_status($dbc, $id, $status)
+{
+    $query = 'UPDATE stuff SET item_status ="' . $status . '" WHERE id=' . $id;
+    show_query($query);
+    $results = mysqli_query($dbc,$query) ;
+}
 # Shows the query as a debugging aid
 function show_query($query) {
   global $debug;
