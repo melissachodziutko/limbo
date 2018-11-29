@@ -30,7 +30,8 @@ tr:nth-child(even) {
 require( 'includes/connect_db.php' ) ;
 # Includes these helper functions
 require( 'includes/helpers_limbo.php' ) ;
-show_link_records($dbc);
+$status = "found";
+show_records($dbc, $status);
 
 if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     $id = $_POST['id'];
@@ -43,14 +44,11 @@ if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     # Close the connection
 mysqli_close( $dbc ) ;
 ?>
-    
-<!--<input type="text" name="id" value="<?php 
-    if (isset($_POST['location_id'])) echo $_POST['location_id']; ?>">--> </p>
-    <p>Item Id: <input type="text" name="id" value="<?php 
-            if (isset($_POST['id'])) echo $_POST['id']; ?>"></p>
-
 <!-- HTML with embedded PHP --> 
 <form action="UpdateFoundItems.php" method="POST"> 
+<p>Item Id: <input type="text" name="id" value="<?php 
+    if (isset($_POST['id'])) echo $_POST['id']; ?>"></p>
+    
 <p>Location: 
     <select id="location_id" name="location_id">                      
   <option value="0">--Select Location--</option>
@@ -86,6 +84,7 @@ mysqli_close( $dbc ) ;
     <option value="30">West Cedar Townhouses (Lower)</option>
     <option value="31">West Cedar Townhouses (Upper)</option>
 </select>
+    <?php if (isset($_POST['location_id'])) echo $_POST['location_id']; ?> </p>
 
 <p>Description: <input type="text" name="description" value="<?php 
     if (isset($_POST['description'])) echo $_POST['description']; ?>"></p> 
