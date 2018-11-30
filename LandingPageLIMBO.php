@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
- <!--  <head> <style>
+    
+    <head><style>
 body, html {
     height: 100%;
     margin: 0;
@@ -52,8 +53,7 @@ input[type=submit] {
 input[type=submit]:hover {
     background: #f44c0e;
 }
-</style> -->
-<!--</head>--><head>
+</style>
          <link rel="stylesheet" href="overall.css">
         <div class="hero-image">
   <div class="hero-text">
@@ -61,11 +61,10 @@ input[type=submit]:hover {
     <p>Marist's Number 1 Lost and Found Database</p>
   </div>
 </div>
-    </head>
         <title>Welcome to Limbo!</title>
-        <meta name="description">
+        <meta name="description" content="An interactive getting started guide for Brackets.">
         <!--<link rel="stylesheet" href="overall.css">-->
-   
+    </head>
     <body>
         <!-- this would lead to adminlogin.html -->
         
