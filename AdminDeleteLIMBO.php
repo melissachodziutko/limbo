@@ -93,7 +93,6 @@ input[type=submit]:hover {
 			<input type="submit" value="Delete"> 
 		</p>	
 		</form>-->
-            <p>Change Status</p>
   </div>
 </div>
 	<body>
