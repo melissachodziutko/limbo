@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> Delete an Admin </title>
-</head>
+    
+    <head><style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
+  height: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30px;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+input[type=submit] {
+    border: 1px solid #f44c0e;
+    color: #fff;
+    background: tomato;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+input[type=submit]:hover {
+    background: #f44c0e;
+}
+</style>
+         
+        <div class="hero-image">
+            <link rel="stylesheet" href="overall.css">
+  <div class="hero-text">
+    <h1>LIMBO</h1>
+    <p>Delete Admin</p>
+  </div>
+</div>
 <body>
-    <?php
+	<button><a href="lost.php"> Lost something</a> </button>
+		<button> <a href="found.php">Found something</a> </button>
+		<button><a href="LandingPageLIMBO.php">Landing page</a> </button>
+		<button> <a href="AdminDeleteLIMBO.php"> Delete an item </a> </button>
+		<button> <a href="DeleteAdminLIMBO.php"> Delete an admin </a> </button>
+		<button> <a href="AddAdminLIMBO.php"> Add an admin </a> </button>
+        <button> <a href="AdminChangePasswordLIMBO.php"> Change an admin's password </a> </button>
+        <button> <a href="logoutpage.php">Logout</a> </button>
+    <center>
+      <?php
         # Connect to MySQL server and the database
         require( 'includes/connect_db.php' ) ;
         # Includes these helper functions
@@ -12,10 +80,6 @@
     
         show_admin_records($dbc);
     ?>
-	<button> <a href="LandingPageLIMBO.php"> Back to landing page </a></button>
-	<button> <a href="losttable.php"> Lost something </a> </button>
-	<button> <a href="foundtable.php"> Found something </a> </button>
-	<button> <a href="adminlogin.php"> Admins </a> </button>
 	<h1> Please complete and submit the following form to delete an admin: </h1>
 	<form action="DeleteAdminLIMBO.php" method="POST">
 		<p>
@@ -72,5 +136,6 @@
 			}
 		}
 		?>
+</center>
 </body>
 </html>
