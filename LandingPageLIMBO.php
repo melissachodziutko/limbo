@@ -63,7 +63,7 @@ input[type=submit]:hover {
 </div>
     </head>
         <title>Welcome to Limbo!</title>
-        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <meta name="description">
         <!--<link rel="stylesheet" href="overall.css">-->
    
     <body>
