@@ -1,28 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="PracticeforLIMBO.css">
-    <title> Delete Lost/Found Items in Tables </title>
-</head>
-  <head>
-<style>  
-    table {
-    font-family: sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+    
+    <head><style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+input[type=submit] {
+    border: 1px solid #f44c0e;
+    color: #fff;
+    background: tomato;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+input[type=submit]:hover {
+    background: #f44c0e;
 }
 </style>
-</head>
+         
+        <div class="hero-image">
+            <link rel="stylesheet" href="overall.css">
+  <div class="hero-text">
+    <h1>LIMBO</h1>
+    <p>Marist's Number 1 Lost and Found Database</p>
+  </div>
+</div>
+        <form action="LandingPageLIMBO.php" align = "left">
+        <input type="submit" value="Go to Landing Page" />
+        </form>
+        <center>
     <h1> Update Found Item in Table </h1>
     
 <?php
@@ -40,6 +83,7 @@ if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
     $update = date('Y-m-d G:i:s');
     $room = $_POST['room'] ;
     update_item($dbc, $id, $location_id, $desc, $update, $room);
+    header("Refresh:0");
 }
     # Close the connection
 mysqli_close( $dbc ) ;
@@ -84,7 +128,7 @@ mysqli_close( $dbc ) ;
     <option value="30">West Cedar Townhouses (Lower)</option>
     <option value="31">West Cedar Townhouses (Upper)</option>
 </select>
-    <?php if (isset($_POST['location_id'])) echo $_POST['location_id']; ?> </p>
+    <?php if (isset($_POST['location_id'])) ; ?> </p>
 
 <p>Description: <input type="text" name="description" value="<?php 
     if (isset($_POST['description'])) echo $_POST['description']; ?>"></p> 
@@ -93,3 +137,7 @@ mysqli_close( $dbc ) ;
     
  <button type="submit">Edit Table</button>
 <button><a href="found.php"> Found something</a> </button>
+        </form></center>
+        <br>
+        <br>
+        
