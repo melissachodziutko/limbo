@@ -10,6 +10,8 @@
 		<button> <a href="AdminDeleteLIMBO.php"> Delete an item </a> </button>
 		<button> <a href="DeleteAdminLIMBO.php"> Delete an admin </a> </button>
 		<button> <a href="AddAdminLIMBO.php"> Add an admin </a> </button>
+        <button> <a href="AdminChangePasswordLIMBO.php"> Change an admin's password </a> </button>
+        <button> <a href="logoutpage.php">Logout</a> </button>
 		<h1> Select an item from the list to edit its status. </h1>
 		<form action='#'>
 		<p> 
@@ -35,7 +37,8 @@
 			require( 'includes/helpers_limbo.php' ) ;
 			# Shows the records in prints
             
-			show_link_records($dbc);
+            $status = "both";
+			show_records($dbc, $status);
             if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
                 #echo "i am being called";
                 $id = $_POST['id'];

@@ -17,12 +17,13 @@ create table if not exists users
 user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 username VARCHAR(20) NOT NULL,
 pass CHAR(40) NOT NULL,
+email VARCHAR(100) NOT NULL,
 PRIMARY KEY (user_id)
 );
 
 #insert admin (only one who needs a login)
-insert into users (username, pass)
-values ("admin", "gaze11e");
+insert into users (username, pass, email)
+values ("admin", "gaze11e", "admin@marist.com");
 
 #create stuff table
 drop table if exists stuff;
