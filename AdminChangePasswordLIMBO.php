@@ -6,7 +6,7 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
 }
 	 
-<!--this is just page decoration-->
+/*this is just page decoration*/
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
   height: 50%;
@@ -57,7 +57,7 @@ input[type=submit]:hover {
 	<button> <a href="losttable.php"> Lost something </a> </button>
 	<button> <a href="foundtable.php"> Found something </a> </button>
 	<button> <a href="adminlogin.php"> Admins </a> </button>
-	<!-- Admin table? -->
+	<!-- Admin table -->
 	<h1> Please complete and submit the following form to change an admin's password: </h1>
 	<form action='#'>
 		#the required fields in order to change the password
