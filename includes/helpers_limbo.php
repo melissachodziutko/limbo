@@ -118,7 +118,7 @@ function show_admin_records($dbc) {
 	
 # Query to get email, username, and password for each admin
 $query = 'SELECT email, username, password FROM admins ORDER BY username ASC';
-$results = mysli_query( $dbc, $query );
+$results = mysqli_query( $dbc, $query );
 check_results($results);
 # Show results
 	if( $results )
