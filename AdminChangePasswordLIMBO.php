@@ -6,7 +6,7 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
 }
 	 
-#this is just page decoration
+<!--this is just page decoration-->
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
   height: 50%;
