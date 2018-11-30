@@ -100,6 +100,7 @@ input[type=submit]:hover {
 		<button><a href="lost.php"> Lost something</a> </button>
 		<button> <a href="found.php">Found something</a> </button>
 		<button><a href="LandingPageLIMBO.php">Landing page</a> </button>
+        <button> <a href="AdminChangeStatusLIMBO.php"> Change Status </a> </button>
 		<button> <a href="AdminDeleteLIMBO.php"> Delete an item </a> </button>
 		<button> <a href="DeleteAdminLIMBO.php"> Delete an admin </a> </button>
 		<button> <a href="AddAdminLIMBO.php"> Add an admin </a> </button>
