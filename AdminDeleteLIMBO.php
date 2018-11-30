@@ -108,7 +108,7 @@ input[type=submit]:hover {
         <button> <a href="logoutpage.php">Logout</a> </button>
 		<h1> Select an item from the list to edit its status. </h1>
         <center>
-		<form action='#'>
+		<!--<form action='#'>
 		<p> 
 			Reported in last
 			<label for="timeList">  
@@ -121,7 +121,7 @@ input[type=submit]:hover {
 				<option value= "2 years" id="searchTime5">
 			</datalist>
 		</p>
-		</form>
+		</form>-->
 		<!-- Put table here -->
 		<!-- Sorry, this part might not be right -->
 			<?php
