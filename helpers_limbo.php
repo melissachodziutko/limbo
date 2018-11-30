@@ -277,6 +277,11 @@ function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finde
   return $results ;
 }
 
+function delete_admin($dbc, $username) {
+	$query = 'DELETE FROM users WHERE username = ' . $username ;
+	$results = mysqli_query( $dbc , $query ) ;
+	show_admin_records($dbc);
+}
 function change_status($dbc, $id, $status)
 {
     $query = 'UPDATE stuff SET item_status ="' . $status . '" WHERE id=' . $id;
