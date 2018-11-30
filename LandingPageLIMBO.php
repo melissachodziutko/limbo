@@ -59,11 +59,11 @@ input[type=submit]:hover {
             <link rel="stylesheet" href="overall.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
-    <p>Marist's Number 1 Lost and Found Database</p>
+    <p>Marist's Best Lost and Found Database</p>
   </div>
 </div>
         <title>Welcome to Limbo!</title>
-        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <meta name="description">
     </head>
     <body>
         <!-- this would lead to adminlogin.html -->
