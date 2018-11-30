@@ -2,17 +2,29 @@
 $debug = true;
 #Amy Moczydlowski, Melissa Chodziutko, Shaina Razvi, Danielle Anderson
 # Shows the records in prints
-
 #shows table of items
-function show_lost_records($dbc) {
+function show_lost_records($dbc, $time) {
 	# Create a query to get the description, create_date, item_status
-    
+    if ($time == 0){
 	$query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost' ORDER BY create_date DESC" ;
-	
+    }
+    else {
+        if ($time == 1){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost'and create_date >= NOW() - INTERVAL 1 DAY ORDER BY create_date DESC" ;
+        }
+        else if ($time == 2){
+       $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost'and create_date >= NOW() - INTERVAL 7 DAY ORDER BY create_date DESC" ;
+        }
+        else if ($time == 3){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost'and create_date >= NOW() - INTERVAL 1 MONTH ORDER BY create_date DESC" ;
+        }
+        else if ($time == 4){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'lost'and create_date >= NOW() - INTERVAL 1 YEAR ORDER BY create_date DESC" ;
+        }
+    }
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
-
 	# Show results
 	if( $results )
 	{
@@ -45,52 +57,29 @@ function show_lost_records($dbc) {
 		  mysqli_free_result( $results ) ;
     }
 }
-function show_lost_ql1_records($dbc) {
-	# Create a query to get the description, create_date, item_status
-    
-	$query = "SELECT description, create_date, item_status FROM stuff WHERE item_status= 'lost' AND update_date > '2018-11-06 07:12:46'  ORDER BY create_date DESC" ;
-	
-	# Execute the query
-	$results = mysqli_query( $dbc , $query ) ;
-	check_results($results) ;
 
-	# Show results
-	if( $results )
-	{
-  		# But...wait until we know the query succeed before
-  		# rendering the table start.
-  		 echo '<H1>Lost Items</H1>' ;
-		echo '<TABLE>';
-		  echo '<table border = "1"';
-		  echo '<TR>';
-		  echo '<TH>Description</TH>';
-		  echo '<TH>Creation Date</TH>';
-		  echo '<TH>Status</TH>';
-		  echo '</TR>';
-		  # For each row result, generate a table row
-		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
-		  {
-			echo '<TR>' ;
-			echo '<TD>' . $row['description'] . '</TD>' ;
-			echo '<TD>' . $row['create_date'] . '</TD>' ;
-			echo '<TD>' . $row['item_status'] . '</TD>' ;
-			echo '</TR>' ;
-		  }
-		  # End the table
-		  echo '</TABLE>';
-		  # Free up the results in memory
-		  mysqli_free_result( $results ) ;
-    }
-}
-function show_found_records($dbc) {
+function show_found_records($dbc, $time) {
 	# Create a query to get the description, create_date, item_status
-    
+    if ($time == 0){
 	$query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found' ORDER BY create_date DESC" ;
-	
+    }
+    else {
+        if ($time == 1){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found'and create_date >= NOW() - INTERVAL 1 DAY ORDER BY create_date DESC" ;
+        }
+        else if ($time == 2){
+       $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found'and create_date >= NOW() - INTERVAL 7 DAY ORDER BY create_date DESC" ;
+        }
+        else if ($time == 3){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found'and create_date >= NOW() - INTERVAL 1 MONTH ORDER BY create_date DESC" ;
+        }
+        else if ($time == 4){
+        $query = "SELECT id, description, create_date, item_status FROM stuff WHERE item_status= 'found'and create_date >= NOW() - INTERVAL 1 YEAR ORDER BY create_date DESC" ;
+        }
+    }
     # Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
-
 	# Show results
 	if( $results )
 	{
@@ -129,10 +118,8 @@ function show_admin_records($dbc) {
 	
 # Query to get email, username, and password for each admin
 $query = 'SELECT email, username, password FROM admins ORDER BY username ASC';
-
 $results = mysli_query( $dbc, $query );
 check_results($results);
-
 # Show results
 	if( $results )
 	{
@@ -146,7 +133,6 @@ check_results($results);
 		  echo '<TH>Email</TH>';
 		  echo '<TH>Password</TH>';
 		  echo '</TR>';
-
 		  # For each row result, generate a table row
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
 		  {
@@ -162,21 +148,27 @@ check_results($results);
 		  mysqli_free_result( $results ) ;
     }
 }
-
-function show_link_records($dbc) {
+function show_records($dbc, $status) {
 	# Create a query to get the description, create_date, item_status
-	$query = 'SELECT id, description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
+    if ($status == "both") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff ORDER BY create_date DESC' ;
+    }
+    else if ($status == "found") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff WHERE item_status = "found" ORDER BY create_date DESC' ;
+    }
+    else if ($status == "lost") {
+        $query = 'SELECT id, description, create_date, item_status FROM stuff WHERE item_status = "lost" ORDER BY create_date DESC' ;
+    }
 	
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
-
 	# Show results
 	if( $results )
 	{
   		# But...wait until we know the query succeed before
   		# rendering the table start.
-  		 echo '<H1>Lost Items</H1>' ;
+  		 echo '<H1>Items</H1>' ;
 		echo '<TABLE>';
 		  echo '<table border = "1"';
 		  echo '<TR>';
@@ -190,8 +182,9 @@ function show_link_records($dbc) {
           {
 			echo '<TR>' ;
 			
-			$alink = '<A HREF=AdminChangeStatus.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
-			echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+			#$alink = '<A HREF=AdminChangeStatus.php?id=' . $row['id']  . '>' . $row['id'] . '</A>' ;
+			#echo '<TD ALIGN=right>' . $alink . '</TD>' ;
+            echo '<TD>' . $row['id'] . '</TD>' ;
             echo '<TD>' . $row['description'] . '</TD>' ;
 			echo '<TD>' . $row['create_date'] . '</TD>' ;
 			echo '<TD>' . $row['item_status'] . '</TD>' ;
@@ -211,7 +204,6 @@ function show_record($dbc, $id) {
 	# Execute the query
 	$results = mysqli_query( $dbc , $query ) ;
 	check_results($results) ;
-
 	# Show results
 	if( $results )
 	{
@@ -250,7 +242,6 @@ function show_record($dbc, $id) {
 		  mysqli_free_result( $results ) ;
     }
 }
-
 # Inserts a record into the prints table
 function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finder, $item_status) {
   $query = 'INSERT INTO stuff(location_id, description, create_date, update_date, room, owner, finder, item_status) VALUES ("' . $id . '" ,"' . $desc . '" , "' . $create . '","' . $update . '","' . $room . '","' . $owner . '","' . $finder . '","' . $item_status . '")' ;
@@ -264,17 +255,14 @@ function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finde
 	  echo '<p style ="color:red; font-size:16px;">Please complete the item status.</p>';
 	else
 		check_results($results) ;
-
   return $results ;
 }
-
 function change_status($dbc, $id, $status)
 {
     $query = 'UPDATE stuff SET item_status ="' . $status . '" WHERE id=' . $id;
     show_query($query);
     $results = mysqli_query($dbc,$query) ;
 }
-
 function update_item($dbc, $id, $location_id, $desc, $update, $room)
 {
     if (!empty($desc)){
@@ -299,19 +287,15 @@ function update_item($dbc, $id, $location_id, $desc, $update, $room)
 # Shows the query as a debugging aid
 function show_query($query) {
   global $debug;
-
   if($debug)
     echo "<p>Query = $query</p>" ;
 }
-
 # Checks the query results as a debugging aid
 function check_results($results) {
   global $dbc;
-
   if($results != true)
     echo '<p>SQL ERROR = ' . mysqli_error( $dbc ) . '</p>'  ; 
 }
-
 function valid_description($description) {  
 #echo '<p> I am being called</p>'; 
 if(empty($description) || is_numeric($description))
@@ -319,7 +303,6 @@ if(empty($description) || is_numeric($description))
 else
   return true ; 
 }
-
  function valid_date($date) {
 	#echo '<p> I am being called</p>'; 
 	if (empty($date)) 
@@ -327,13 +310,11 @@ else
 	else
 		return true;
  }
-
 function valid_status($item_status) {
     if(empty($item_status))
         return false;
     else
         return true;
 }
-
 ?>
 
