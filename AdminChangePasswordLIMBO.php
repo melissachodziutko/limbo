@@ -99,13 +99,13 @@ input[type=submit]:hover {
 		</p>
 		<p>
 		<label> Old Password: * </label>
-			<input type="text" name="password" <?php 
+			<input type="password" name="password" <?php 
 				if (isset($_POST['password'])) echo $_POST['password']; 
 				?>required> </input>
 		</p>
 		<p>
 		<label> New Password: * </label>
-			<input type="text" name="newPass" <?php 
+			<input type="password" name="newPass" <?php 
 				if (isset($_POST['newPass'])) echo $_POST['newPass']; 
 				?>required> </input>
 		</p>
@@ -135,6 +135,7 @@ input[type=submit]:hover {
 					   }
                  else{  
 				$result = change_password($dbc, $username, $newPass) ;
+                     header("Refresh:0");
 		  #echo "<p>Added " . $result . " new print(s) ". $num . " @ $" . $fname . " . $lname . "</p>" ; 
 				}
 			} 

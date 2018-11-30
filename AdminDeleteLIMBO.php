@@ -108,9 +108,9 @@ input[type=submit]:hover {
         <button> <a href="logoutpage.php">Logout</a> </button>
 		<h1> Select an item from the list to edit its status. </h1>
         <center>
-		<!--<form action='#'>
+		<form action='#'>
 		<p> 
-			Reported in last
+			<!--Reported in last
 			<label for="timeList">  
 			<input type="text" id="timeList" placeholder="amount of time" list="searchTime">
 			<datalist id="searchTime">
@@ -119,9 +119,9 @@ input[type=submit]:hover {
 				<option value= "month" id="searchTime3">
 				<option value= "year" id="searchTime4">
 				<option value= "2 years" id="searchTime5">
-			</datalist>
+			</datalist>-->
 		</p>
-		</form>-->
+		</form>
 		<!-- Put table here -->
 		<!-- Sorry, this part might not be right -->
 			<?php
@@ -138,6 +138,7 @@ input[type=submit]:hover {
                 #echo "i am being called";
                 $id = $_POST['id'];
                 delete_item($dbc, $id);
+                
             }
 			?>
         <form action="AdminDeleteLIMBO.php" method="POST"> 

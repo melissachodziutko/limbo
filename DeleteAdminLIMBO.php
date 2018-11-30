@@ -129,6 +129,7 @@ input[type=submit]:hover {
 					}
                  else{  
 				$result = delete_admin($dbc, $username) ;
+                     header("Refresh:0");
 		  #echo "<p>Added " . $result . " new print(s) ". $num . " @ $" . $fname . " . $lname . "</p>" ; 
 				}
 			} 
