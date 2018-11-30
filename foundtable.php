@@ -24,16 +24,7 @@
         <p>
         Found something? Take a look at what is currently in our databases.
         </p>
-            Reported in last
-			<label for="timeList">  
-			<input type="text" id="timeList" placeholder="amount of time" list="searchTime">
-			<datalist id="searchTime">
-				<option value= "24 hours" id="searchTime1">
-				<option value= "7 days" id="searchTime2">
-				<option value= "Month" id="searchTime3">
-				<option value= "Year" id="searchTime4">
-				<option value= "2 years" id="searchTime5">
-			</datalist>
+            
         
       <!-- put the php here-->
             <?php
@@ -47,7 +38,8 @@
                     if(isset($_GET['id'])) 
 		                  show_record($dbc, $_GET['id']) ;
                 }
-                show_found_records($dbc);
+                $time = 0;
+                show_found_records($dbc, $time);
 ?>
         <form action="found.php">
         <input type="submit" value="Don't see your item?" />
