@@ -114,10 +114,11 @@ function show_found_records($dbc, $time) {
 			}
 }
 # Table of admin info
+
 function show_admin_records($dbc) {
 	
 # Query to get email, username, and password for each admin
-$query = 'SELECT email, username, password FROM admins ORDER BY username ASC';
+$query = 'SELECT email, username, pass FROM users ORDER BY username ASC';
 $results = mysqli_query( $dbc, $query );
 check_results($results);
 # Show results
@@ -139,7 +140,7 @@ check_results($results);
 			echo '<TR>' ;
 			echo '<TD>' . $row['username'] . '</TD>' ;
 			echo '<TD>' . $row['email'] . '</TD>' ;
-			echo '<TD>' . $row['password'] . '</TD>' ;
+			echo '<TD>' . $row['pass'] . '</TD>' ;
 			echo '</TR>' ;
 		  }
 		  # End the table
@@ -256,6 +257,30 @@ function insert_record($dbc, $id, $desc, $create, $update, $room, $owner, $finde
 	else
 		check_results($results) ;
   return $results ;
+}
+function insert_users($dbc, $uname, $email, $pass){
+    $query = 'INSERT INTO users(username, pass, email) VALUES ("' . $uname . '","' . $pass . '", "' . $email . '")';
+    show_query($query);
+    $results = mysqli_query($dbc, $query) ;
+    #check_results($results) ;
+    check_results($results);
+    return $results;
+}
+function delete_admin($dbc, $username) {
+	$query = 'DELETE FROM users WHERE username = "' . $username .'"';
+	$results = mysqli_query( $dbc , $query ) ;
+    check_results($results);
+	show_admin_records($dbc);
+    return $results;
+}
+
+function change_password($dbc, $username, $newPass) {
+    $query = 'UPDATE users SET pass ="' . $newPass . '" WHERE username= "' . $username .'"';
+    show_query($query);
+    $results = mysqli_query($dbc,$query) ;
+    check_results($results);
+    show_admin_records($dbc);
+    return $results;
 }
 function change_status($dbc, $id, $status)
 {
