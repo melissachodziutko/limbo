@@ -10,7 +10,7 @@ body, html {
 
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
-  height: 20%;
+  height: 10%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,7 +56,7 @@ input[type=submit]:hover {
 </style>
          
         <div class="hero-image">
-            <link rel="stylesheet" href="overall.css">
+            <link rel="stylesheet" href="overall2.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
     <p>Change Status</p>

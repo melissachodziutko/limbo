@@ -56,7 +56,7 @@ input[type=submit]:hover {
 </style>
          
         <div class="hero-image">
-            <link rel="stylesheet" href="overall.css">
+            <link rel="stylesheet" href="overall2.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
     <p>Add Admin</p>
