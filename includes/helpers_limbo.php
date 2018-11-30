@@ -296,22 +296,23 @@ function update_item($dbc, $id, $location_id, $desc, $update, $room)
 {
     if (!empty($desc)){
         $query = 'UPDATE stuff SET description ="' . $desc . '" WHERE id=' . $id;
-        show_query($query);
+        #show_query($query);
         $results = mysqli_query($dbc,$query) ;
     }
-    if (!empty($room)){
+    else if (!empty($room)){
         $query = 'UPDATE stuff SET room ="' . $room . '" WHERE id=' . $id;
-        show_query($query);
+        #show_query($query);
         $results = mysqli_query($dbc,$query) ;
     }
-    if (!empty($location_id)){
+    else if (!empty($location_id)){
         $query = 'UPDATE stuff SET location_id ="' . $location_id . '" WHERE id=' . $id;
-        show_query($query);
+        #show_query($query);
         $results = mysqli_query($dbc,$query) ;
-    }
+    } else {
     $query = 'UPDATE stuff SET update_date ="' . $update . '" WHERE id=' . $id;
-    show_query($query);
+    #show_query($query);
     $results = mysqli_query($dbc,$query) ;
+    }
 }
 # Shows the query as a debugging aid
 function show_query($query) {
