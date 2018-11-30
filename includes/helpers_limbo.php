@@ -118,7 +118,7 @@ function show_found_records($dbc, $time) {
 function show_admin_records($dbc) {
 	
 # Query to get email, username, and password for each admin
-$query = 'SELECT email, username, pass FROM users ORDER BY username ASC';
+$query = 'SELECT email, username FROM users ORDER BY username ASC';
 $results = mysqli_query( $dbc, $query );
 check_results($results);
 # Show results
@@ -132,7 +132,6 @@ check_results($results);
 		  echo '<TR>';
 		  echo '<TH>Username</TH>';
 		  echo '<TH>Email</TH>';
-		  echo '<TH>Password</TH>';
 		  echo '</TR>';
 		  # For each row result, generate a table row
 		  while ( $row = mysqli_fetch_array( $results , MYSQLI_ASSOC ) )
@@ -140,7 +139,6 @@ check_results($results);
 			echo '<TR>' ;
 			echo '<TD>' . $row['username'] . '</TD>' ;
 			echo '<TD>' . $row['email'] . '</TD>' ;
-			echo '<TD>' . $row['pass'] . '</TD>' ;
 			echo '</TR>' ;
 		  }
 		  # End the table
@@ -288,6 +286,12 @@ function change_status($dbc, $id, $status)
     show_query($query);
     $results = mysqli_query($dbc,$query) ;
 }
+function delete_item($dbc, $id) {
+	$query = 'DELETE FROM stuff WHERE id = "' . $id .'"';
+	$results = mysqli_query( $dbc , $query ) ;
+    check_results($results);
+    return $results;
+}
 function update_item($dbc, $id, $location_id, $desc, $update, $room)
 {
     if (!empty($desc)){
@@ -313,7 +317,7 @@ function update_item($dbc, $id, $location_id, $desc, $update, $room)
 function show_query($query) {
   global $debug;
   if($debug)
-    echo "<p>Query = $query</p>" ;
+    echo "<p>Records have been changed.</p>" ;
 }
 # Checks the query results as a debugging aid
 function check_results($results) {
