@@ -97,7 +97,7 @@ input[type=submit]:hover {
 		</p>
 		<p>
 		<label> Admin's Password: * </label>
-			<input type="text" name="password" <?php 
+			<input type="password" name="password" <?php 
 				if (isset($_POST['password'])) echo $_POST['password']; 
 				?>required> </input>
 		</p>
