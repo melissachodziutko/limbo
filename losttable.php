@@ -81,6 +81,10 @@ input[type=submit]:hover {
                 # Includes these helper functions
                 require( 'includes/helpers_limbo.php' ) ;
                 # Shows the records in prints
+		if($_SERVER[ 'REQUEST_METHOD' ] == 'GET') {
+                    if(isset($_GET['id'])) 
+		                  show_record($dbc, $_GET['id']) ;
+                }
                 $time = 0;
                 show_lost_records($dbc, $time);
 ?>
