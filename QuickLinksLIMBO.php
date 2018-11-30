@@ -41,68 +41,38 @@
 			Reported in last
 			
          
-         <form action="QuickLinksLIMBO.php" method="POST"> 
+<form action="QuickLinksLIMBO.php" method="POST"> 
 <p>reported in last: 
-    <select id="time" name="time">                      
-  <option value="0">Select Time</option>
+    <select id="id" name="id">   
   <option value="1">24 Hours</option>
   <option value="2">7 Days</option>
-  <option value="3">1 Month</option>
+  <option value="3">30 Days</option>
+<option value="4">1 Year</option>
 </select>
-
-
-    <!--<input type="text" name="id" value="<?php 
-    if (isset($_POST['time'])) echo $_POST['time']; ?>">--> </p> 
-<p><input type="submit"></p> 
-                <?php
+<?php 
+    require( 'includes/connect_db.php' ) ;
+    # Includes these helper functions
+    require( 'includes/helpers_limbo.php' ) ;
+    $time = 0;
+    
+    if (isset($_POST['id'])) ; ?> </p> 
+             <p><input type="submit"></p> </form>
+        <?php
+                $check = false;
          if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
-    $id = $_POST['time'];
-             if ($id = 1){
-	
-            require( 'includes/connect_db.php' ) ;
-            # Includes these helper functions
-             require( 'includes/helpers_limbo.php' ) ;
-              # Shows the records in prints
-              show_lost_ql1_records($dbc);
-             } 
-   
- 
-}     
-                ?>
+            $time = $_POST['id'];
+         }
+         if ($check == false){
+            $debug = true;
+            show_lost_records($dbc, $time);
+            show_found_records($dbc, $time);
+            } 
+         else {
+                echo "";
+            }
+        ?>
 </form>
 		</p>
-		<div class="bothForms">
-            <center>
-			<div class="rLost">
-				
-				<!-- Put recently lost table here -->
-                <?php
-                 #$time = $_POST['id'];
-                $debug = true;
-                require( 'includes/connect_db.php' ) ;
-                # Includes these helper functions
-                require( 'includes/helpers_limbo.php' ) ;
-                # Shows the records in prints
-                show_lost_records($dbc);
-                ?>
-			</div>
-			<div class="rFound">
-				
-				<!-- Put recently found table here -->
-                <?php
-                #$time = $_POST['id'];
-                $debug = true;
-                #require( 'includes/connect_db.php' ) ;
-                # Includes these helper functions
-                #require( 'includes/helpers_limbo.php' ) ;
-                # Shows the records in prints
-                show_found_records($dbc);
-                ?>
-			</div>
-                <br>
-                <br>
-                </center>
-		</div>
-	 
+		
      </body>
 </html>
