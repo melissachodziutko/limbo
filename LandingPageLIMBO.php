@@ -54,8 +54,9 @@ input[type=submit]:hover {
     background: #f44c0e;
 }
 </style>
-         <link rel="stylesheet" href="overall.css">
+         
         <div class="hero-image">
+            <link rel="stylesheet" href="overall.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
     <p>Marist's Number 1 Lost and Found Database</p>
@@ -63,7 +64,6 @@ input[type=submit]:hover {
 </div>
         <title>Welcome to Limbo!</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
-        <!--<link rel="stylesheet" href="overall.css">-->
     </head>
     <body>
         <!-- this would lead to adminlogin.html -->

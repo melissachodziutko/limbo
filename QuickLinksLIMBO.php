@@ -1,16 +1,68 @@
 <!DOCTYPE html>
 <html>
     
-    <head>
-		<title> Quick Links </title>
-		<link rel="stylesheet" href="overall.css">
-    <div class="hero-image">
+    <head><style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+input[type=submit] {
+    border: 1px solid #f44c0e;
+    color: #fff;
+    background: tomato;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+input[type=submit]:hover {
+    background: #f44c0e;
+}
+</style>
+         
+        <div class="hero-image">
+            <link rel="stylesheet" href="overall.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
     <p>Marist's Number 1 Lost and Found Database</p>
   </div>
 </div>
-     </head>
+    </head>
      <body>
           <!--lead back to PracticePageLIMBO.html-->
 		<form action="LandingPageLIMBO.php" align = "left">
@@ -40,7 +92,7 @@
 		<p> 
 			Reported in last
 			
-         
+  <center>      
 <form action="QuickLinksLIMBO.php" method="POST"> 
 <p>reported in last: 
     <select id="id" name="id">   
@@ -73,6 +125,8 @@
         ?>
 </form>
 		</p>
-		
+		<br>
+        <br>
+         </center> 
      </body>
 </html>
