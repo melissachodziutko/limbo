@@ -4,7 +4,7 @@
 # Connect to MySQL server and the database
 require( 'includes/connect_db.php' ) ;
 
-# Connect to MySQL server and the database
+# Identifies logged in admin
 require( 'includes/adminlogin_tools.php' ) ;
 
 session_start();
