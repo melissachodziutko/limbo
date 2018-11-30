@@ -8,6 +8,7 @@
 		<button> <a href="found.php">Found something</a> </button>
 		<button><a href="LandingPageLIMBO.php">Landing page</a> </button>
         <button><a href="AdminChangeStatusLIMBO.php">Change Status</a></button>
+		<!--admins can delete "resolved" items off the list if claimed by the owner--> 
 		<h1> Select an item from the list to delete. </h1>
 		<form action='#'>
 		<p> 
