@@ -78,7 +78,7 @@ if ($_SESSION['logged_in'] == 'logged'){
 }
 else {
     if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
-    
+    #prompts for username and password if login is selected
     $uname = $_POST['username'] ;
     $pass = $_POST['password'] ;
     
