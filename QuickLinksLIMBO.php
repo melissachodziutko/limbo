@@ -88,19 +88,20 @@ input[type=submit]:hover {
         <input type="submit" value="Admin" />
         </form>
             </div>
+         <center>
 		<h1> Click on an item for more details! </h1>
 		<p> 
-			Reported in last
 			
-  <center>      
+        
 <form action="QuickLinksLIMBO.php" method="POST"> 
-<p>reported in last: 
+<p>Reported in last: 
     <select id="id" name="id">   
   <option value="1">24 Hours</option>
   <option value="2">7 Days</option>
   <option value="3">30 Days</option>
 <option value="4">1 Year</option>
 </select>
+    
 <?php 
     require( 'includes/connect_db.php' ) ;
     # Includes these helper functions
@@ -125,8 +126,11 @@ input[type=submit]:hover {
         ?>
 </form>
 		</p>
-		<br>
+		
+    <p>Any questions? Email: admin@marist.edu</p>
+    <br>
         <br>
          </center> 
+
      </body>
 </html>
