@@ -76,7 +76,7 @@ input[type=submit]:hover {
         <center>
 		<form action='#'>
 		<p> 
-			Reported in last
+			<!--Reported in last
 			<label for="timeList">  
 			<input type="text" id="timeList" placeholder="amount of time" list="searchTime">
 			<datalist id="searchTime">
@@ -85,7 +85,7 @@ input[type=submit]:hover {
 				<option value= "month" id="searchTime3">
 				<option value= "year" id="searchTime4">
 				<option value= "2 years" id="searchTime5">
-			</datalist>
+			</datalist>-->
 		</p>
 		</form>
 		<!-- Put table here -->
