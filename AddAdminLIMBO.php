@@ -1,8 +1,10 @@
 <!DOCTYPE html>
  
 	<title> Add New Admin </title>
+	#this allows super admins to add admins that can access and edit the database
 
 <body>
+	
 	<button> <a href="LandingPageLIMBO.php"> Back to landing page </a></button>
 	<button> <a href="losttable.php"> Lost something </a> </button>
 	<button> <a href="foundtable.php"> Found something </a> </button>
@@ -11,6 +13,7 @@
 	<?php
 	
 	?>
+	#fill in the blank to add new admin users name, email and password
 	<h1> Please complete and submit the following form to add a new admin: </h1>
 	<form action='#'>
 		<h3> (required fields are marked with an *) </h3>
