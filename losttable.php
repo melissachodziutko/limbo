@@ -59,7 +59,7 @@ input[type=submit]:hover {
             <link rel="stylesheet" href="overall.css">
   <div class="hero-text">
     <h1>LIMBO</h1>
-    <p>Marist's Number 1 Lost and Found Database</p>
+    <p>Marist's #1 Lost and Found Database</p>
   </div>
 </div>
     </head>
