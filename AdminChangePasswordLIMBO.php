@@ -5,6 +5,8 @@ body, html {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+	 
+#this is just page decoration
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marist.jpg");
   height: 50%;
@@ -47,10 +49,10 @@ input[type=submit]:hover {
     background: #f44c0e;
 }
 </style>
-
+	
 	<title> Change Admin Password </title>
 </head>
-<body>
+<body>	#the site navigation
 	<button> <a href="LandingPageLIMBO.php"> Back to landing page </a></button>
 	<button> <a href="losttable.php"> Lost something </a> </button>
 	<button> <a href="foundtable.php"> Found something </a> </button>
@@ -58,6 +60,7 @@ input[type=submit]:hover {
 	<!-- Admin table? -->
 	<h1> Please complete and submit the following form to change an admin's password: </h1>
 	<form action='#'>
+		#the required fields in order to change the password
 		<h3> (required fields are marked with an *) </h3>
 		<p> 
 		<label> Admin's Username: * </label>
@@ -75,7 +78,7 @@ input[type=submit]:hover {
 		<label> New Password: * </label>
 			<input type="text" required> </input>
 		</p>
-		<p> 
+		<p> 	#once submitted the password will be changed
 			<input type="submit" value="Change Password"> </input>
 			<input type="reset" value="Clear"> </input>
 		</p>
