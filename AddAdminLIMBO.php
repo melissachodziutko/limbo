@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  
 	<title> Add New Admin </title>
-	#this allows super admins to add admins that can access and edit the database
+	<!-- this allows super admins to add admins that can access and edit the database--> 
 
 <body>
 	
@@ -13,7 +13,7 @@
 	<?php
 	
 	?>
-	#fill in the blank to add new admin users name, email and password
+	<!--fill in the blank to add new admin user's name, email and password--> 
 	<h1> Please complete and submit the following form to add a new admin: </h1>
 	<form action='#'>
 		<h3> (required fields are marked with an *) </h3>
