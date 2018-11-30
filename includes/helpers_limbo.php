@@ -283,7 +283,7 @@ function change_password($dbc, $username, $newPass) {
 function change_status($dbc, $id, $status)
 {
     $query = 'UPDATE stuff SET item_status ="' . $status . '" WHERE id=' . $id;
-    show_query($query);
+    #show_query($query);
     $results = mysqli_query($dbc,$query) ;
 }
 function delete_item($dbc, $id) {
