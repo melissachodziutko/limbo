@@ -4,6 +4,7 @@
 	<title> Delete an Admin </title>
 </head>
 <body>
+	<!--super admin can delete other admin users-->
 	<button> <a href="LandingPageLIMBO.php"> Back to landing page </a></button>
 	<button> <a href="losttable.php"> Lost something </a> </button>
 	<button> <a href="foundtable.php"> Found something </a> </button>
@@ -11,7 +12,7 @@
 	<h1> Please complete and submit the following form to delete an admin: </h1>
 	<form action='#'>
 		<h3> (required fields are marked with an *) </h3>
-		<p>
+		<p>	
 		<label> Admin's Username: * </label>
 			<input type="text" name="username" <?php 
 				if (isset($_POST['username'])) echo $_POST['username']; 
@@ -30,12 +31,14 @@
 				?>required> </input>
 		</p>
 		<p>
+		<!--super admin must verify themselves as super admin-->
 		<label> Your Password: * </label>
 			<input type="text" name="password" <?php 
 				if (isset($_POST['password'])) echo $_POST['password']; 
 				?>required> </input>
 		</p>
 		<p> 
+		<!--once submitted the admin's privledges & account will be deleted-->
 			<input type="submit" value="Delete"> </input>
 			<input type="reset" value="Clear"> </input>
 		</p>
