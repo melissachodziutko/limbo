@@ -60,7 +60,7 @@ input[type=submit]:hover {
   <div class="hero-text">
     <h1>LIMBO</h1>
     <p>Delete Items</p>
-  </div>
+ <!-- </div>
 </div>
 	<body>
 	<button><a href="lost.php"> Lost something</a> </button>
@@ -71,8 +71,42 @@ input[type=submit]:hover {
 		<button> <a href="AddAdminLIMBO.php"> Add an admin </a> </button>
         <button> <a href="AdminChangePasswordLIMBO.php"> Change an admin's password </a> </button>
         <button> <a href="logoutpage.php">Logout</a> </button>
-		<!--admins can delete "resolved" items off the list if claimed by the owner--> 
+		<!--admins can delete "resolved" items off the list if claimed by the owner 
 		<h1> Select an item from the list to delete. </h1>
+		<form action='#'>
+		<p> -->
+			<!--Reported in last
+			<!--<label for="timeList">  
+			<input type="text" id="timeList" placeholder="amount of time" list="searchTime">
+			<datalist id="searchTime">
+				<option value= "24 hours" id="searchTime1">
+				<option value= "7 days" id="searchTime2">
+				<option value= "month" id="searchTime3">
+				<option value= "year" id="searchTime4">
+				<option value= "2 years" id="searchTime5">
+			</datalist>--
+		</p>
+		</form>-->
+		<!-- Put table here
+		<form action='#'>
+		<p>
+			<input type="submit" value="Delete"> 
+		</p>	
+		</form>-->
+            <p>Change Status</p>
+  </div>
+</div>
+	<body>
+		<button><a href="lost.php"> Lost something</a> </button>
+		<button> <a href="found.php">Found something</a> </button>
+		<button><a href="LandingPageLIMBO.php">Landing page</a> </button>
+		<button> <a href="AdminDeleteLIMBO.php"> Delete an item </a> </button>
+		<button> <a href="DeleteAdminLIMBO.php"> Delete an admin </a> </button>
+		<button> <a href="AddAdminLIMBO.php"> Add an admin </a> </button>
+        <button> <a href="AdminChangePasswordLIMBO.php"> Change an admin's password </a> </button>
+        <button> <a href="logoutpage.php">Logout</a> </button>
+		<h1> Select an item from the list to edit its status. </h1>
+        <center>
 		<form action='#'>
 		<p> 
 			Reported in last
@@ -88,10 +122,31 @@ input[type=submit]:hover {
 		</p>
 		</form>
 		<!-- Put table here -->
-		<form action='#'>
-		<p>
-			<input type="submit" value="Delete"> 
-		</p>	
+		<!-- Sorry, this part might not be right -->
+			<?php
+			 #$time = $_POST['id'];
+			$debug = true;
+			require( 'includes/connect_db.php' ) ;
+			# Includes these helper functions
+			require( 'includes/helpers_limbo.php' ) ;
+			# Shows the records in prints
+            
+            $status = "both";
+			show_records($dbc, $status);
+            if ($_SERVER[ 'REQUEST_METHOD' ] == 'POST') {
+                #echo "i am being called";
+                $id = $_POST['id'];
+                delete_item($dbc, $id);
+            }
+			?>
+        <form action="AdminDeleteLIMBO.php" method="POST"> 
+        <p>Enter Id of Item to Delete: <input type="text" name="id" value="<?php 
+            if (isset($_POST['id'])) echo $_POST['id']; ?>"></p>
+        <p>
+		<input type="submit" value="submit"> 
 		</form>
+            <br>
+            <br>
+            </center>
 	</body>
 </html>
